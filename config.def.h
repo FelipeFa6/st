@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Roboto Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "monospace:pixelsize=12:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -95,24 +95,24 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	[0] = "#DBD3BC", /* hard contrast: #f9f5d7 / soft contrast: #f2e5bc */
-	[1] = "#cc241d", /* red     */
-	[2] = "#98971a", /* green   */
-	[3] = "#d79921", /* yellow  */
-	[4] = "#458588", /* blue    */
-	[5] = "#b16286", /* magenta */
-	[6] = "#689d6a", /* cyan    */
-	[7] = "#7c6f64", /* white   */
+	[0] = "#dad6bb",
+	[1] = "#cc241d",
+	[2] = "#98971a",
+	[3] = "#d79921",
+	[4] = "#458588",
+	[5] = "#b16286",
+	[6] = "#689d6a",
+	[7] = "#7c6f64",
 	
 	/* 8 bright colors */
-	[8]  = "#928374", /* black   */
-	[9]  = "#9d0006", /* red     */
-	[10] = "#79740e", /* green   */
-	[11] = "#b57614", /* yellow  */
-	[12] = "#076678", /* blue    */
-	[13] = "#8f3f71", /* magenta */
-	[14] = "#427b58", /* cyan    */
-	[15] = "#464446", /* white   */
+	[8]  = "#928374",
+	[9]  = "#9d0006",
+	[10] = "#79740e",
+	[11] = "#b57614",
+	[12] = "#076678",
+	[13] = "#8f3f71",
+	[14] = "#427b58",
+	[15] = "#464446",
 };
 
 
