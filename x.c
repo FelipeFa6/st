@@ -19,6 +19,7 @@ char *argv0;
 #include "arg.h"
 #include "st.h"
 #include "win.h"
+#include "contrast.h"
 
 /* types used in config.h */
 typedef struct {
@@ -869,8 +870,8 @@ xhints(void)
 	sizeh->flags = PSize | PResizeInc | PBaseSize | PMinSize;
 	sizeh->height = win.h;
 	sizeh->width = win.w;
-	sizeh->height_inc = win.ch;
-	sizeh->width_inc = win.cw;
+	sizeh->height_inc = 1;
+	sizeh->width_inc = 1;
 	sizeh->base_height = 2 * borderpx;
 	sizeh->base_width = 2 * borderpx;
 	sizeh->min_height = win.ch + 2 * borderpx;
@@ -1480,6 +1481,17 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
 		xclear(winx, 0, winx + width, borderpx);
 	if (winy + win.ch >= borderpx + win.th)
 		xclear(winx, winy + win.ch, winx + width, win.h);
+
+
+	/*
+	 * Adjust colours to enforce a minimum contrast. Using the local truefg/bg
+	 * here to ensure we don't alter the dc.cols table permanently.
+	 */
+	fg = memcpy( &truefg, fg, sizeof(Color));
+	bg = memcpy( &truebg, bg, sizeof(Color));
+
+	adjust_color_for_contrast( fg, bg);
+
 
 	/* Clean up the region we want to draw to. */
 	XftDrawRect(xw.draw, bg, winx, winy, width, win.ch);
